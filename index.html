@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жгучие туры</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- Анимированный фон -->
+<div class="background-animation">
+    <div class="floating-element el1"></div>
+    <div class="floating-element el2"></div>
+    <div class="floating-element el3"></div>
+    <div class="floating-element el4"></div>
+    <div class="floating-element el5"></div>
+</div>
+
+<!-- Градиентный оверлей -->
+<div class="gradient-overlay"></div>
+
+<!-- Шапка -->
+<header class="header">
+    <div class="header-content">
+        <div class="logo">
+            <div class="logo-icon">🌶️</div>
+            <div class="logo-text">
+                <span class="logo-main">Жгучие туры</span>
+                <span class="logo-sub">Горящие предложения</span>
+            </div>
+        </div>
+        <div class="header-actions">
+            <div class="weather-widget">
+                <span class="weather-icon">☀️</span>
+                <span class="weather-temp">+24°C</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Основной контент -->
+<main class="main-content">
+    <!-- Горящие туры -->
+    <section id="hot-tours" class="page active">
+        <div class="page-header">
+            <div class="page-title">
+                <h1>Горящие туры</h1>
+                <p>Самые выгодные предложения этого сезона</p>
+            </div>
+            <div class="page-badge">
+                <span class="badge-hot">🔥 ГОРЯЩЕЕ</span>
+            </div>
+        </div>
+
+        <div class="module-container">
+            <div class="module-loader" id="hot-tours-loader">
+                <div class="loader-spinner"></div>
+                <p>Ищем самые горящие предложения...</p>
+            </div>
+            <div class="tv-hot-tours tv-moduleid-9985513" id="hot-tours-module"></div>
+        </div>
+    </section>
+
+    <!-- Поиск туров -->
+    <section id="search" class="page">
+        <div class="page-header">
+            <div class="page-title">
+                <h1>Поиск туров</h1>
+                <p>Найдите идеальное путешествие</p>
+            </div>
+            <div class="search-tips">
+                <span class="tip">💡 Выберите направление и даты</span>
+            </div>
+        </div>
+
+        <div class="module-container">
+            <div class="module-loader" id="search-loader">
+                <div class="loader-spinner"></div>
+                <p>Загружаем поисковую форму...</p>
+            </div>
+            <div class="tv-search-form tv-moduleid-9974183" id="search-module"></div>
+        </div>
+    </section>
+
+    <!-- Специальные предложения -->
+    <section id="special" class="page">
+        <div class="page-header">
+            <div class="page-title">
+                <h1>Специальные предложения</h1>
+                <p>Эксклюзивные возможности для вас</p>
+            </div>
+            <div class="page-badge">
+                <span class="badge-special">⭐ ЭКСКЛЮЗИВ</span>
+            </div>
+        </div>
+
+        <div class="special-offers">
+            <div class="offer-card" onclick="openLink('https://perec-franshiza.ru/')">
+                <div class="offer-header">
+                    <div class="offer-icon">🌶️</div>
+                    <div class="offer-badges">
+                        <span class="offer-badge new">НОВИНКА</span>
+                        <span class="offer-badge business">БИЗНЕС</span>
+                    </div>
+                </div>
+                <h3>Франшиза "Перец"</h3>
+                <p>Станьте партнером успешной сети туристических агентств с готовой бизнес-моделью</p>
+                <div class="offer-features">
+                    <span class="feature">🚀 Быстрый старт</span>
+                    <span class="feature">📈 Высокая маржа</span>
+                    <span class="feature">🎯 Поддержка</span>
+                </div>
+                <button class="btn-offer">
+                    Узнать подробнее
+                    <span class="btn-arrow">→</span>
+                </button>
+            </div>
+
+            <div class="offer-card" onclick="openLink('https://travel-agent007.ru/course')">
+                <div class="offer-header">
+                    <div class="offer-icon">🎓</div>
+                    <div class="offer-badges">
+                        <span class="offer-badge education">ОБУЧЕНИЕ</span>
+                        <span class="offer-badge sale">СКИДКА 20%</span>
+                    </div>
+                </div>
+                <h3>Профессия Travel-агент</h3>
+                <p>Полное обучение с нуля до профессионала с гарантией трудоустройства</p>
+                <div class="offer-features">
+                    <span class="feature">📚 15 модулей</span>
+                    <span class="feature">💼 Практика</span>
+                    <span class="feature">👨‍🏫 Наставник</span>
+                </div>
+                <button class="btn-offer">
+                    Начать обучение
+                    <span class="btn-arrow">→</span>
+                </button>
+            </div>
+
+            <div class="offer-card premium">
+                <div class="offer-header">
+                    <div class="offer-icon">👑</div>
+                    <div class="offer-badges">
+                        <span class="offer-badge premium">PREMIUM</span>
+                    </div>
+                </div>
+                <h3>VIP Подбор туров</h3>
+                <p>Персональный менеджер подберет тур по вашим пожеланиям</p>
+                <div class="offer-features">
+                    <span class="feature">🎯 Индивидуально</span>
+                    <span class="feature">⚡ За 2 часа</span>
+                    <span class="feature">💎 Лучшие отели</span>
+                </div>
+                <button class="btn-offer btn-premium" onclick="showVIPModal()">
+                    Заказать подбор
+                    <span class="btn-arrow">✨</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Личный кабинет -->
+    <section id="profile" class="page">
+        <div class="page-header">
+            <div class="page-title">
+                <h1>Личный кабинет</h1>
+                <p>Управляйте своими бронированиями</p>
+            </div>
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Туров</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Бонусов</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-content">
+            <div class="profile-card">
+                <div class="profile-avatar">
+                    <div class="avatar-icon">👤</div>
+                    <div class="avatar-status"></div>
+                </div>
+                <div class="profile-info">
+                    <h3>Добро пожаловать!</h3>
+                    <p>Войдите в личный кабинет для доступа к вашим бронированиям и персональным предложениям</p>
+                </div>
+                <div class="profile-actions">
+                    <button class="btn-primary" onclick="openLink('https://www.mytour.club/index/welcome')">
+                        <span class="btn-icon">🔐</span>
+                        Войти в личный кабинет
+                    </button>
+                    <button class="btn-secondary" onclick="showAuthOptions()">
+                        <span class="btn-icon">📱</span>
+                        Другие способы входа
+                    </button>
+                </div>
+                <div class="profile-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">📋</span>
+                        <span>Мои бронирования</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">⭐</span>
+                        <span>Бонусная программа</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🔔</span>
+                        <span>Уведомления</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">❤️</span>
+                        <span>Избранное</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Навигация -->
+<nav class="bottom-nav">
+    <button class="nav-item active" data-page="hot-tours">
+        <div class="nav-icon-wrapper">
+            <span class="nav-icon">🔥</span>
+            <div class="nav-pulse"></div>
+        </div>
+        <span class="nav-label">Горящие</span>
+    </button>
+    <button class="nav-item" data-page="search">
+        <div class="nav-icon-wrapper">
+            <span class="nav-icon">🔍</span>
+        </div>
+        <span class="nav-label">Поиск</span>
+    </button>
+    <button class="nav-item" data-page="special">
+        <div class="nav-icon-wrapper">
+            <span class="nav-icon">⭐</span>
+        </div>
+        <span class="nav-label">Спец</span>
+    </button>
+    <button class="nav-item" data-page="profile">
+        <div class="nav-icon-wrapper">
+            <span class="nav-icon">👤</span>
+        </div>
+        <span class="nav-label">Кабинет</span>
+    </button>
+</nav>
+
+<!-- Модальное окно VIP -->
+<div id="vipModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>👑 VIP Подбор тура</h3>
+            <button class="modal-close" onclick="closeVIPModal()">×</button>
+        </div>
+        <div class="modal-body">
+            <p>Оставьте заявку и наш персональный менеджер свяжется с вами в течение 15 минут</p>
+            <div class="form-group">
+                <input type="text" placeholder="Ваше имя" class="form-input">
+            </div>
+            <div class="form-group">
+                <input type="tel" placeholder="Ваш телефон" class="form-input">
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Ваши пожелания к туру..." class="form-textarea"></textarea>
+            </div>
+            <button class="btn-primary btn-full">Отправить заявку</button>
+        </div>
+    </div>
+</div>
+
+<!-- Скрипты -->
+<script type="text/javascript" src="//tourvisor.ru/module/init.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
