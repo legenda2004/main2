@@ -7,8 +7,27 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        /* Стили из SearchFragment */
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: #0A0A0A;
+            overflow-x: hidden;
+            font-family: 'Roboto', sans-serif;
+            color: white;
+        }
+
+        /* Стили для страницы поиска */
         .search-page-wrapper {
             min-height: calc(100vh - 140px);
             background: #0A0A0A;
@@ -133,6 +152,11 @@
             padding: 40px 35px;
             position: relative;
             overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .search-module-wrapper:hover {
+            transform: translateY(-5px);
         }
 
         .search-module-wrapper::before {
@@ -177,7 +201,7 @@
         .tv-search-form textarea {
             border-radius: 15px !important;
             border: 2px solid rgba(255, 68, 68, 0.3) !important;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+            font-family: 'Roboto', sans-serif !important;
             padding: 16px 20px !important;
             font-size: 16px !important;
             transition: all 0.3s ease !important;
@@ -313,6 +337,240 @@
             }
         }
 
+        /* Улучшенные стили для других страниц */
+        .page {
+            display: none;
+            min-height: calc(100vh - 140px);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .page-header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FF2E2E 0%, #FF9800 50%, #4CAF50 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(255, 68, 68, 0.3);
+            margin-bottom: 10px;
+        }
+
+        /* Стили для горящих туров */
+        .tv-hot-tours {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tv-hot-tours-module {
+            width: 100%;
+            background: rgba(20, 20, 20, 0.9) !important;
+            backdrop-filter: blur(20px);
+            border-radius: 20px !important;
+            box-shadow:
+                    0 0 0 1px rgba(255, 68, 68, 0.4),
+                    0 20px 60px rgba(255, 68, 68, 0.3),
+                    0 8px 30px rgba(76, 175, 80, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+            margin: 0 auto;
+            padding: 30px 25px !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Стили для специальных предложений */
+        .special-offers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .offer-card {
+            background: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(25px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow:
+                    0 0 0 1px rgba(255, 68, 68, 0.3),
+                    0 10px 30px rgba(255, 68, 68, 0.2),
+                    0 5px 15px rgba(76, 175, 80, 0.2);
+        }
+
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow:
+                    0 0 0 1px rgba(255, 68, 68, 0.5),
+                    0 15px 40px rgba(255, 68, 68, 0.3),
+                    0 8px 25px rgba(76, 175, 80, 0.3);
+        }
+
+        .offer-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 68, 68, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .offer-card:hover::before {
+            left: 100%;
+        }
+
+        .offer-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .offer-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #FF4444;
+            font-weight: 600;
+        }
+
+        .offer-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .offer-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF2E2E, #FF4444);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Стили для личного кабинета */
+        .profile-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60vh;
+            position: relative;
+            z-index: 10;
+        }
+
+        .profile-card {
+            background: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(25px);
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            box-shadow:
+                    0 0 0 1px rgba(255, 68, 68, 0.3),
+                    0 15px 50px rgba(255, 68, 68, 0.2),
+                    0 5px 20px rgba(76, 175, 80, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 68, 68, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .profile-card:hover::before {
+            left: 100%;
+        }
+
+        .profile-icon {
+            font-size: 70px;
+            margin-bottom: 20px;
+        }
+
+        .profile-card h3 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            color: #FF4444;
+            font-weight: 600;
+        }
+
+        .profile-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF2E2E, #FF4444, #45B649);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            padding: 16px 32px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 68, 68, 0.4);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(255, 68, 68, 0.6);
+            background: linear-gradient(135deg, #FF4444, #45B649, #4CAF50);
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn-primary:hover::after {
+            left: 100%;
+        }
+
+        /* Адаптивность */
         @media (max-width: 768px) {
             .main-title {
                 font-size: 36px;
@@ -329,6 +587,23 @@
 
             .content-wrapper {
                 padding: 30px 15px;
+            }
+
+            .page-header h1 {
+                font-size: 28px;
+            }
+
+            .special-offers {
+                grid-template-columns: 1fr;
+            }
+
+            .offer-card, .profile-card {
+                padding: 25px 20px;
+            }
+
+            .tv-hot-tours-module {
+                padding: 25px 20px !important;
+                border-radius: 18px !important;
             }
         }
 
@@ -349,6 +624,15 @@
             .content-wrapper {
                 padding: 20px 10px;
             }
+
+            .page-header h1 {
+                font-size: 24px;
+            }
+
+            .tv-hot-tours-module {
+                padding: 20px 15px !important;
+                border-radius: 16px !important;
+            }
         }
     </style>
 </head>
@@ -367,10 +651,22 @@
 <main class="main-content">
     <!-- Горящие туры -->
     <section id="hot-tours" class="page active">
-        <div class="page-header">
-            <h1>Горящие туры</h1>
+        <div class="search-page-wrapper">
+            <div class="main-background"></div>
+            <div class="animated-background"></div>
+            <div class="fire-glow"></div>
+            <div class="particles" id="particles-hot"></div>
+
+            <div class="content-wrapper">
+                <div class="header-section">
+                    <div class="main-title">Горящие Туры</div>
+                    <div class="subtitle">Самые выгодные предложения этого сезона</div>
+                </div>
+                <div class="tv-hot-tours">
+                    <div class="tv-hot-tours-module tv-hot-tours tv-moduleid-9985513"></div>
+                </div>
+            </div>
         </div>
-        <div class="tv-hot-tours tv-moduleid-9985513"></div>
     </section>
 
     <!-- Поиск туров -->
@@ -386,7 +682,7 @@
             <div class="fire-glow"></div>
 
             <!-- Частицы -->
-            <div class="particles" id="particles"></div>
+            <div class="particles" id="particles-search"></div>
 
             <!-- Основной контент -->
             <div class="content-wrapper">
@@ -411,39 +707,61 @@
 
     <!-- Специальные предложения -->
     <section id="special" class="page">
-        <div class="page-header">
-            <h1>Специальные предложения</h1>
-        </div>
-        <div class="special-offers">
-            <div class="offer-card" onclick="openLink('https://perec-franshiza.ru/')">
-                <div class="offer-icon">🔥</div>
-                <h3>Франшиза "Перец"</h3>
-                <p>Станьте партнером успешной сети</p>
-                <div class="offer-badge">Новое</div>
-            </div>
+        <div class="search-page-wrapper">
+            <div class="main-background"></div>
+            <div class="animated-background"></div>
+            <div class="fire-glow"></div>
+            <div class="particles" id="particles-special"></div>
 
-            <div class="offer-card" onclick="openLink('https://travel-agent007.ru/course')">
-                <div class="offer-icon">🎓</div>
-                <h3>Курсы для агентов</h3>
-                <p>Профессиональное обучение</p>
-                <div class="offer-badge">Акция</div>
+            <div class="content-wrapper">
+                <div class="header-section">
+                    <div class="main-title">Специальные предложения</div>
+                    <div class="subtitle">Эксклюзивные возможности для вас</div>
+                </div>
+
+                <div class="special-offers">
+                    <div class="offer-card" onclick="openLink('https://perec-franshiza.ru/')">
+                        <div class="offer-icon">🔥</div>
+                        <h3>Франшиза "Перец"</h3>
+                        <p>Станьте партнером успешной сети и откройте свой бизнес в сфере туризма с поддержкой профессионалов</p>
+                        <div class="offer-badge">Новое</div>
+                    </div>
+
+                    <div class="offer-card" onclick="openLink('https://travel-agent007.ru/course')">
+                        <div class="offer-icon">🎓</div>
+                        <h3>Курсы для агентов</h3>
+                        <p>Профессиональное обучение туризму с нуля до эксперта. Станьте востребованным специалистом</p>
+                        <div class="offer-badge">Акция</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Личный кабинет -->
     <section id="profile" class="page">
-        <div class="page-header">
-            <h1>Личный кабинет</h1>
-        </div>
-        <div class="profile-content">
-            <div class="profile-card">
-                <div class="profile-icon">👤</div>
-                <h3>Доступ к личному кабинету</h3>
-                <p>Управляйте своими бронированиями и получайте специальные предложения</p>
-                <button class="btn-primary" onclick="openLink('https://www.mytour.club/index/welcome')">
-                    Войти в личный кабинет
-                </button>
+        <div class="search-page-wrapper">
+            <div class="main-background"></div>
+            <div class="animated-background"></div>
+            <div class="fire-glow"></div>
+            <div class="particles" id="particles-profile"></div>
+
+            <div class="content-wrapper">
+                <div class="header-section">
+                    <div class="main-title">Личный кабинет</div>
+                    <div class="subtitle">Управляйте своими бронированиями</div>
+                </div>
+
+                <div class="profile-content">
+                    <div class="profile-card">
+                        <div class="profile-icon">👤</div>
+                        <h3>Доступ к личному кабинету</h3>
+                        <p>Управляйте своими бронированиями, отслеживайте статус заказов и получайте эксклюзивные предложения</p>
+                        <button class="btn-primary" onclick="openLink('https://www.mytour.club/index/welcome')">
+                            Войти в личный кабинет
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -473,10 +791,13 @@
 <script type="text/javascript" src="//tourvisor.ru/module/init.js"></script>
 <script src="js/app.js"></script>
 <script>
-    // Создание частиц
-    function createParticles() {
-        const particlesContainer = document.getElementById('particles');
-        const particleCount = 50;
+    // Создание частиц для каждой страницы
+    function createParticles(containerId) {
+        const particlesContainer = document.getElementById(containerId);
+        if (!particlesContainer) return;
+
+        const particleCount = 30;
+        particlesContainer.innerHTML = '';
 
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
@@ -495,10 +816,12 @@
         }
     }
 
-    // Запуск при загрузке
-    document.addEventListener('DOMContentLoaded', createParticles);
+    // Функция для открытия ссылок
+    function openLink(url) {
+        window.open(url, '_blank');
+    }
 
-    // Функция для применения стилей к модулям Tourvisor после их загрузки
+    // Применение стилей к модулям Tourvisor
     function applyTourvisorStyles() {
         setTimeout(() => {
             const style = document.createElement('style');
@@ -508,7 +831,7 @@
                 .tv-search-form textarea {
                     border-radius: 15px !important;
                     border: 2px solid rgba(255, 68, 68, 0.3) !important;
-                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+                    font-family: 'Roboto', sans-serif !important;
                     padding: 16px 20px !important;
                     font-size: 16px !important;
                     transition: all 0.3s ease !important;
@@ -596,13 +919,101 @@
                     border-radius: 8px !important;
                     padding: 15px !important;
                 }
+
+                /* Стили для горящих туров */
+                .tv-hot-tours-item {
+                    border-radius: 18px !important;
+                    border: 2px solid rgba(255, 68, 68, 0.4) !important;
+                    margin-bottom: 25px !important;
+                    overflow: hidden !important;
+                    transition: all 0.4s ease !important;
+                    background: rgba(30, 30, 30, 0.9) !important;
+                    backdrop-filter: blur(10px) !important;
+                    box-shadow: 0 8px 30px rgba(255, 68, 68, 0.2) !important;
+                    position: relative !important;
+                }
+                .tv-hot-tours-item:hover {
+                    transform: translateY(-8px) scale(1.02) !important;
+                    box-shadow: 0 15px 40px rgba(255, 68, 68, 0.4), 0 5px 20px rgba(76, 175, 80, 0.3) !important;
+                    border-color: #FF4444 !important;
+                }
+                .tv-hot-tours-price {
+                    background: linear-gradient(135deg, #FF2E2E, #FF4444, #45B649) !important;
+                    color: white !important;
+                    font-weight: bold !important;
+                    border-radius: 15px !important;
+                    padding: 12px 20px !important;
+                    font-size: 18px !important;
+                    box-shadow: 0 4px 15px rgba(255, 68, 68, 0.5) !important;
+                    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+                    position: relative !important;
+                    overflow: hidden !important;
+                }
+                .tv-hot-tours-title {
+                    color: #FF4444 !important;
+                    font-weight: bold !important;
+                    font-size: 20px !important;
+                    text-shadow: 0 0 10px rgba(255, 68, 68, 0.3) !important;
+                }
+                .tv-hot-tours-button {
+                    background: linear-gradient(135deg, #FF4444, #45B649, #4CAF50) !important;
+                    border-radius: 15px !important;
+                    border: none !important;
+                    font-weight: bold !important;
+                    transition: all 0.3s ease !important;
+                    padding: 12px 25px !important;
+                    font-size: 16px !important;
+                    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4) !important;
+                    position: relative !important;
+                    overflow: hidden !important;
+                }
+                .tv-hot-tours-button:hover {
+                    transform: translateY(-3px) scale(1.05) !important;
+                    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6) !important;
+                    background: linear-gradient(135deg, #45B649, #4CAF50, #FF4444) !important;
+                }
             `;
             document.head.appendChild(style);
         }, 1000);
     }
 
-    // Применяем стили после загрузки страницы
-    document.addEventListener('DOMContentLoaded', applyTourvisorStyles);
+    // Навигация между страницами
+    document.addEventListener('DOMContentLoaded', function() {
+        // Создаем частицы для всех страниц
+        createParticles('particles-hot');
+        createParticles('particles-search');
+        createParticles('particles-special');
+        createParticles('particles-profile');
+
+        // Применяем стили к Tourvisor
+        applyTourvisorStyles();
+
+        // Навигация
+        const navItems = document.querySelectorAll('.nav-item');
+        const pages = document.querySelectorAll('.page');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const targetPage = this.getAttribute('data-page');
+
+                // Обновляем активную навигацию
+                navItems.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+
+                // Показываем целевую страницу
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                    if (page.id === targetPage) {
+                        page.classList.add('active');
+
+                        // Пересоздаем частицы для активной страницы
+                        const particlesId = `particles-${targetPage}`;
+                        createParticles(particlesId);
+                    }
+                });
+            });
+        });
+    });
 </script>
 </body>
 </html>
