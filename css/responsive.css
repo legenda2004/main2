@@ -1,0 +1,101 @@
+/* Адаптивность */
+@media (max-width: 768px) {
+    .header-content {
+        padding: 0 15px;
+    }
+
+    .logo-text {
+        font-size: 1.2rem;
+    }
+
+    .main-content {
+        padding: 15px;
+        min-height: calc(100vh - 120px);
+    }
+
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .special-offers {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .offer-card {
+        padding: 20px;
+    }
+
+    .profile-card {
+        padding: 30px 20px;
+        margin: 0 10px;
+    }
+
+    .nav-item {
+        padding: 6px 10px;
+    }
+
+    .nav-label {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text {
+        font-size: 1.1rem;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+
+    .page-header h1 {
+        font-size: 1.3rem;
+    }
+
+    .offer-card {
+        padding: 15px;
+    }
+
+    .offer-icon {
+        font-size: 2.5rem;
+    }
+
+    .profile-card {
+        padding: 20px 15px;
+    }
+
+    .nav-item {
+        padding: 5px 8px;
+    }
+
+    .nav-label {
+        font-size: 0.6rem;
+    }
+}
+
+/* Поддержка PWA */
+@media (display-mode: standalone) {
+    .header {
+        padding-top: env(safe-area-inset-top);
+    }
+
+    .bottom-nav {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #1a1a1a;
+        --text-dark: #ffffff;
+        --text-light: #b0b0b0;
+        --white: #2d2d2d;
+    }
+
+    .tv-hot-tours,
+    .tv-search-form {
+        filter: brightness(0.9);
+    }
+}
