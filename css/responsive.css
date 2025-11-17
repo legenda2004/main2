@@ -1,0 +1,267 @@
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .header-content,
+    .main-content {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .header-content {
+        padding: 0 10px;
+    }
+
+    .logo-main {
+        font-size: 1.2rem;
+    }
+
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+
+    .weather-widget {
+        padding: 6px 10px;
+    }
+
+    .main-content {
+        padding: 15px 10px;
+        min-height: calc(100vh - 120px);
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .page-title h1 {
+        font-size: 1.8rem;
+    }
+
+    .special-offers {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .offer-card {
+        padding: 20px;
+    }
+
+    .offer-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .offer-badges {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .profile-card {
+        padding: 30px 20px;
+        margin: 0 10px;
+    }
+
+    .profile-features {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-stats {
+        justify-content: center;
+    }
+
+    .module-container {
+        padding: 15px;
+    }
+
+    .nav-item {
+        padding: 6px 10px;
+    }
+
+    .nav-label {
+        font-size: 0.65rem;
+    }
+
+    /* Адаптация Tourvisor для мобильных */
+    .tv-module {
+        transform: scale(0.95);
+        transform-origin: top center;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text {
+        display: none;
+    }
+
+    .weather-widget {
+        display: none;
+    }
+
+    .main-content {
+        padding: 10px 5px;
+    }
+
+    .page-title h1 {
+        font-size: 1.5rem;
+    }
+
+    .page-title p {
+        font-size: 0.9rem;
+    }
+
+    .offer-card {
+        padding: 15px;
+    }
+
+    .offer-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+    }
+
+    .profile-card {
+        padding: 20px 15px;
+    }
+
+    .nav-item {
+        padding: 5px 8px;
+        min-width: 60px;
+    }
+
+    .nav-label {
+        font-size: 0.6rem;
+    }
+
+    .floating-element {
+        display: none;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+        margin: 10px;
+    }
+}
+
+/* Поддержка PWA */
+@media (display-mode: standalone) {
+    .header {
+        padding-top: env(safe-area-inset-top);
+    }
+
+    .bottom-nav {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    body {
+        background: linear-gradient(135deg, var(--darker-bg), var(--dark-bg));
+    }
+}
+
+/* Планшеты */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .special-offers {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .offer-card:nth-child(3) {
+        grid-column: 1 / -1;
+        max-width: 400px;
+        justify-self: center;
+    }
+}
+
+/* Высокие экраны */
+@media (min-height: 1000px) {
+    .main-content {
+        min-height: calc(100vh - 160px);
+    }
+
+    .page-header {
+        margin-bottom: 40px;
+    }
+}
+
+/* Портретная ориентация */
+@media (orientation: portrait) {
+    .background-animation .floating-element {
+        animation-duration: 25s;
+    }
+}
+
+/* Ландшафтная ориентация */
+@media (orientation: landscape) and (max-height: 500px) {
+    .header {
+        padding: 10px 0;
+    }
+
+    .main-content {
+        min-height: calc(100vh - 100px);
+        padding: 10px 20px;
+    }
+
+    .bottom-nav {
+        padding: 8px 0;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 8px 12px;
+    }
+}
+
+/* Поддержка темной темы */
+@media (prefers-color-scheme: dark) {
+    /* Все стили уже оптимизированы для темной темы */
+}
+
+/* Улучшенная поддержка Touch */
+@media (hover: none) and (pointer: coarse) {
+    .offer-card:hover {
+        transform: none;
+    }
+
+    .nav-item:active {
+        background: var(--gradient-primary);
+        transform: scale(0.95);
+    }
+
+    .btn-primary:active,
+    .btn-secondary:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Адаптация для очень маленьких экранов */
+@media (max-width: 320px) {
+    .special-offers {
+        grid-template-columns: 1fr;
+    }
+
+    .offer-card {
+        margin: 0 5px;
+    }
+
+    .nav-item {
+        min-width: 50px;
+        padding: 4px 6px;
+    }
+
+    .nav-icon {
+        font-size: 1.2rem;
+    }
+}
