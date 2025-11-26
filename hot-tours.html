@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Горящие туры - Perec Travel</title>
+    <style>
+        :root {
+            --primary-color: #E53935;
+            --bg-color: #FFFFFF;
+            --dark-bg-color: #121212;
+            --text-color: #212121;
+            --dark-text-color: #FFFFFF;
+            --subtitle-color: #757575;
+            --dark-subtitle-color: #B0B0B0;
+            --section-bg: #F8F9FA;
+            --dark-section-bg: #1E1E1E;
+            --card-bg: #FFFFFF;
+            --dark-card-bg: #2D2D2D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            line-height: 1.6;
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg-color);
+            color: var(--dark-text-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: var(--subtitle-color);
+        }
+
+        .dark-mode .subtitle {
+            color: var(--dark-subtitle-color);
+        }
+
+        .module-container {
+            margin: 20px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: var(--section-bg);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            min-height: 500px;
+        }
+
+        .dark-mode .module-container {
+            background-color: var(--dark-section-bg);
+        }
+
+        .tourvisor-module {
+            width: 100%;
+            min-height: 500px;
+            background: transparent;
+        }
+
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 500px;
+            background-color: var(--section-bg);
+        }
+
+        .dark-mode .loading-container {
+            background-color: var(--dark-section-bg);
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 16px;
+        }
+
+        .dark-mode .loading-spinner {
+            border-color: #333;
+            border-top-color: var(--primary-color);
+        }
+
+        .loading-text {
+            color: var(--subtitle-color);
+            font-size: 16px;
+        }
+
+        .dark-mode .loading-text {
+            color: var(--dark-subtitle-color);
+        }
+
+        .info-section {
+            background-color: var(--section-bg);
+            margin: 40px 0;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode .info-section {
+            background-color: var(--dark-section-bg);
+        }
+
+        .info-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--text-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .dark-mode .info-title {
+            color: var(--dark-text-color);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .feature:hover {
+            transform: translateY(-2px);
+        }
+
+        .dark-mode .feature {
+            background-color: var(--dark-card-bg);
+        }
+
+        .feature-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .feature-text {
+            font-size: 14px;
+            color: var(--subtitle-color);
+            line-height: 1.5;
+        }
+
+        .dark-mode .feature-text {
+            color: var(--dark-subtitle-color);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .navigation {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .module-container {
+                margin: 10px 0;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .navigation {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+                flex-wrap: wrap;
+            }
+
+            .theme-toggle {
+                position: static;
+                margin-top: 10px;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="navigation">
+    <a href="index.html" class="nav-button">🏠 Поиск туров</a>
+    <a href="hot-tours.html" class="nav-button">🔥 Горящие туры</a>
+</div>
+
+<button class="theme-toggle" onclick="toggleTheme()">🌙 Тема</button>
+
+<div class="container">
+    <div class="header">
+        <h1 class="title">🔥 Горящие предложения</h1>
+        <p class="subtitle">Самые выгодные туры со скидками до 70%</p>
+    </div>
+
+    <div class="module-container">
+        <div class="loading-container" id="loading">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Загрузка горящих туров...</p>
+        </div>
+        <div id="tourvisorModule" class="tourvisor-module"></div>
+    </div>
+
+    <div class="info-section">
+        <h2 class="info-title">Почему горящие туры?</h2>
+        <div class="features">
+            <div class="feature">
+                <h3 class="feature-title">💰 Экономия</h3>
+                <p class="feature-text">Скидки до 70% от первоначальной стоимости туров</p>
+            </div>
+            <div class="feature">
+                <h3 class="feature-title">⚡ Быстро</h3>
+                <p class="feature-text">Быстрое оформление и вылет в ближайшие даты</p>
+            </div>
+            <div class="feature">
+                <h3 class="feature-title">🎯 Уникально</h3>
+                <p class="feature-text">Уникальные предложения, которые быстро заканчиваются</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function hideLoader() {
+        const loader = document.getElementById('loading');
+        if (loader) {
+            loader.style.display = 'none';
+        }
+    }
+
+    function toggleTheme() {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        const button = document.querySelector('.theme-toggle');
+        button.textContent = isDark ? '☀️ Светлая' : '🌙 Тёмная';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    // Загрузка модуля горящих туров Tourvisor
+    function loadTourvisorModule() {
+        const moduleContainer = document.getElementById('tourvisorModule');
+        moduleContainer.innerHTML = `
+                <div class="tv-hot-tours tv-moduleid-9966763"></div>
+            `;
+
+        const script = document.createElement('script');
+        script.src = '//tourvisor.ru/module/init.js';
+        script.onload = function() {
+            console.log('Tourvisor hot tours module loaded');
+            setTimeout(hideLoader, 2000);
+        };
+        script.onerror = function() {
+            console.error('Failed to load Tourvisor module');
+            hideLoader();
+        };
+        document.head.appendChild(script);
+    }
+
+    // Загружаем модуль при полной загрузке страницы
+    window.addEventListener('load', function() {
+        loadTourvisorModule();
+
+        // Автоматически скрыть загрузчик через 5 секунд на всякий случай
+        setTimeout(hideLoader, 5000);
+    });
+
+    // Сохранение темы в localStorage
+    function initTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            document.querySelector('.theme-toggle').textContent = '☀️ Светлая';
+        }
+    }
+
+    // Инициализация темы при загрузке
+    initTheme();
+</script>
+</body>
+</html>
